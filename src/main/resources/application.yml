@@ -1,0 +1,28 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: kafka-microservice
+  kafka:
+    producer:
+      bootstrap-servers:
+        - localhost:9092
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    consumer:
+      group-id: CKConsumerGroup
+      bootstrap-servers:
+        - localhost:9092
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
+#Custom Topic Properties
+cypcode:
+  kafka:
+    topic: ck-register
+    notification:
+      topic: ck-notify
+      status:
+        topic: ck-notify-status
+    subscription:
+      topic: ck-subscribe
